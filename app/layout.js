@@ -11,7 +11,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}
+        <footer className="Footer">
+          <div className="Footer-container">
+            <p className="Footer-text">
+              PotarokChecker &copy; 2023 | All rights reserved
+            </p>
+          </div>
+        </footer>
+    </body>
     </html>
   )
 }
