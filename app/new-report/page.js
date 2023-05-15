@@ -2,18 +2,18 @@
 import { onAuthStateChanged  } from "firebase/auth";
 import { auth } from '@/firebase';
 import { useState } from "react";
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 const NewReport = () => {
     const [isUser, setisUser] = useState({displayName: 'to Potarok Checker'})
-    const { push } = useRouter();
+    // const { push } = useRouter();
 
     // check if user is already logged in or not, if logged in then push to homepage
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setisUser(user)
         } else{
-        push("/login")
+        // push("/login")
         }
     });
 
@@ -22,7 +22,7 @@ const NewReport = () => {
     //handle new report submit form
     const handleNewReport = (e) => {
         e.preventDefault();
-        push("/")
+        // push("/")
     }
 
 

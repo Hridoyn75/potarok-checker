@@ -4,20 +4,20 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged  } from "firebase/auth";
 import {app, auth, provider} from '@/firebase';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
     const [ipAddress, setIpAddress] = useState('');
     const ipList = ["163.47.158.62"]
     const [isNotUser, setisNotUser] = useState(null);
-    const { push } = useRouter();
+    // const { push } = useRouter();
     const [notAllowed, setnotAllowed] = useState(false);
 
     // check if user is already logged in or not, if logged in then push to homepage
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        push('/');
+        // push('/');
       } else{
         setisNotUser(true)
       }
