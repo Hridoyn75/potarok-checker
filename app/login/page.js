@@ -1,13 +1,14 @@
 "use client"
 import LoginForm from "@/components/loginform"
 import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
 const LoginPage = () => {
 
   const { push } = useRouter()
 
-  if (true) {
-    push("/");
-  }
+  useEffect(() =>{
+      push("/");
+  },[])
 
   return (
     <>
