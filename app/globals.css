@@ -2,30 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@700&display=swap');
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-
-main{
-  font-family: 'Baloo Da 2', cursive;
-}
 body{
   background-color: #FFDFCD;
-}
-
-.Footer {
-  background-color: #f2f2f2;
-  padding: 1rem 0;
-  text-align: center;
-  width: 100%;
-}
-
-.Footer-text {
-  font-size: 1rem;
-  color: #666;
+  font-family: 'Baloo Da 2', cursive!important;
 }
 
 

@@ -12,12 +12,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>{children}
-        <footer className="Footer">
-          <div className="Footer-container">
-            <p className="Footer-text">
+        <footer className='absolute bottom-3  w-full'>
+            <p className='text-center'>
               PotarokChecker &copy; 2023 | All rights reserved
             </p>
-          </div>
         </footer>
     </body>
     </html>
