@@ -1,12 +1,18 @@
 import SearchInput from '@/components/SearchInput'
+import Navbar from '@/components/nav'
 import Image from 'next/image'
 import Link from 'next/link'
+
+
+
 export default function Home() {
 
   return (
     <main>
       <div className=' w-full h-screen px-2 bg-[#FFDFCD] flex justify-center items-center'> 
-        <div className=" bg-white max-w-[1000px] p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
+
+        <div className=" relative bg-white max-w-[1000px] p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
+        <Navbar />
           <div className=' flex-1 text-center pt-20 mb-3 md:mb-0'>
             <Image 
             src={"/assets/logo.png"}

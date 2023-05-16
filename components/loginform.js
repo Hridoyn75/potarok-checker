@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {signInWithPopup,onAuthStateChanged  } from "firebase/auth";
 import {auth, provider} from '@/firebase';
 import { useRouter } from 'next/navigation';
+import { BsFillSkipBackwardBtnFill } from 'react-icons/bs';
 
 const LoginForm = () => {
     const [ipAddress, setIpAddress] = useState('');
@@ -47,7 +48,10 @@ const LoginForm = () => {
         }); 
       }
   return (
-    <div className=' w-[500px] flex justify-center items-center max-w-[90%] min-h-[300px] bg-white p-5 border-2 border-blue-950 border-r-8 border-b-8 rounded-lg'>
+    <div className=' relative w-[500px] flex justify-center items-center max-w-[90%] min-h-[300px] bg-white p-5 border-2 border-blue-950 border-r-8 border-b-8 rounded-lg'>
+          <Link href="/" className=" text-[#172554] px-3 py-1 absolute top-4 left-4 border-2 border-blue-950 border-r-4 border-b-4 rounded-lg">
+          <BsFillSkipBackwardBtnFill />
+          </Link>
             <div className=' grid gap-4'>
             <h1 className=' text-3xl text-blue-950 font-bold  '>Welcome to</h1>
                 <Image 
