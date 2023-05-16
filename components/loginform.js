@@ -4,21 +4,22 @@ import Image from 'next/image'
 import Link from 'next/link';
 import {signInWithPopup,onAuthStateChanged  } from "firebase/auth";
 import {auth, provider} from '@/firebase';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
     const [ipAddress, setIpAddress] = useState('');
     const ipList = ["163.47.158.62"]
     const [notAllowed, setnotAllowed] = useState(false);
-    // const { replace } = useRouter();
+    const { push } = useRouter();
 
-    // check if user is already logged in or not, if logged in then push to homepage
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // replace("/");
-      }
-    });
-
+    useEffect(()=>{
+      // check if user is already logged in or not, if logged in then push to homepage
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          push("/");
+        }
+      });
+    },[])
 
     // get current ip address of user using ipify api service
     const getIP = async ()=>{
