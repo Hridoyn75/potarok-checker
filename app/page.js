@@ -1,8 +1,8 @@
 import SearchInput from '@/components/SearchInput'
 import Image from 'next/image'
 import Link from 'next/link'
-
 export default function Home() {
+
   return (
     <main>
       <div className=' w-full h-screen px-2 bg-[#FFDFCD] flex justify-center items-center'> 

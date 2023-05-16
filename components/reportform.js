@@ -7,21 +7,21 @@ import { useRouter } from 'next/navigation';
 
 const ReportForm = () => {
     const [isUser, setisUser] = useState({displayName: 'to Potarok Checker'})
-    const { push } = useRouter();
+    const { replace } = useRouter();
 
     // check if user is already logged in or not, if logged in then push to homepage
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setisUser(user)
         } else{
-        push("/login")
+         replace("/login")
         }
     });
 
     //handle new report submit form
     const handleNewReport = (e) => {
         e.preventDefault();
-        push("/")
+        replace("/")
     }
   return (
     <form onSubmit={handleNewReport} className=" max-w-[90%] w-[400px] mx-auto grid gap-3">

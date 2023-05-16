@@ -2,26 +2,23 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged  } from "firebase/auth";
-import {app, auth, provider} from '@/firebase';
+import {signInWithPopup,onAuthStateChanged  } from "firebase/auth";
+import {auth, provider} from '@/firebase';
 import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
     const [ipAddress, setIpAddress] = useState('');
     const ipList = ["163.47.158.62"]
-    const [isNotUser, setisNotUser] = useState(null);
-    const { push } = useRouter();
     const [notAllowed, setnotAllowed] = useState(false);
+    const { replace } = useRouter();
 
     // check if user is already logged in or not, if logged in then push to homepage
-
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        push('/');
-      } else{
-        setisNotUser(true)
+        replace("/");
       }
     });
+
 
     // get current ip address of user using ipify api service
     const getIP = async ()=>{
@@ -58,16 +55,13 @@ const LoginForm = () => {
                 height={100}
                 className=' mx-auto'
                 alt='logo' />
-
-                {/* if user not allowed to log in by then show him a notice */}
                 {
                     notAllowed ?
                     <h1 className=' text-red-700 text-3xl'>You are Not Allowed to use our Services</h1>
                     :
                     <button onClick={handleLogin} className=' bg-blue-500 px-5 py-3 hover:bg-slate-600 hover:text-white border-2 border-blue-950 rounded-lg'>
                         Login with Google
-                    </button>
-                    
+                    </button>  
                 }
             </div>
 
