@@ -1,3 +1,4 @@
+"use client"
 import ReportForm from "@/components/reportform";
 
 
