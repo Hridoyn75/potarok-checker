@@ -33,13 +33,13 @@ const RenderReports = ({type}) => {
                 const photos = JSON.parse(report.photos);
                 return (
                  <div className=" w-full sm:w-1/2 lg:w-1/3 p-2" key={report.id} > 
-                <div href={"/report/" + report.id} className=" text-center bg-slate-500 p-3 rounded">
-                    <Link href='/'>
+                <div className=" text-center bg-slate-500 p-3 rounded">
+                    <Link href={"/report/" + report.id}>
                     <div className=" relative mx-auto w-full aspect-video">
                         <Image priority alt="thumbnail" src={photos[0]} fill objectFit="cover" />
                     </div>
                     </Link>
-                    <Link href='/'>
+                    <Link href={"/report/" + report.id}>
                         <p className=" line-clamp-2 min-h-8  text-white my-3">{report.title}</p>
                     </Link>
                     <p className=" text-slate-900 mb-2 line-clamp-2 overflow-hidden">{report.description}</p>
