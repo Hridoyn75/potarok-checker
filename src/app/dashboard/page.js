@@ -70,8 +70,8 @@ const Dashboard = () => {
         <Link href="/auth/login" className=' text-xl bg-yellow-500 py-2 px-4 rounded'>Login Required! Click me</Link>
       </div>
     :
-    <div className=' w-full min-h-screen pt-5 px-2 bg-[#FFDFCD] flex justify-center items-center'> 
-    <div className=" relative bg-white w-[1000px] max-w-full p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
+    <div className=' w-full max-w-full min-h-screen pt-5 px-2 bg-[#FFDFCD] flex justify-center items-center'> 
+    <div className=" relative bg-white w-[1000px] max-w-screen p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
      <BackButton />
       <div className=' min-w-[300px] pt-20 mb-3 md:mb-0'>
         <div className=" bg-red-200 p-3 rounded">

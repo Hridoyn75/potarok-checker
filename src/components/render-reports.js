@@ -28,20 +28,25 @@ const RenderReports = ({type}) => {
             Sorry, no posts found!
         </p>
         }
-        <div className=" min-w-[500px] max-w-full flex md:flex-wrap flex-col md:flex-row">
+        <div className=" w-full max-w-full flex sm:flex-wrap flex-col sm:flex-row">
             {reports.map(report => {
                 const photos = JSON.parse(report.photos);
                 return (
-                <Link href={"/report/" + report.id} key={report.id} className=" text-center w-full max-w-[298px] bg-slate-500 p-3 rounded m-3">
-                        <div className=" relative mx-auto  h-[150px] w-[266.7px]">
-                            <Image priority alt="thumbnail" src={photos[0]} fill objectFit="cover" />
-                        </div>
-
-   
-                    <h3 className=" text-white pt-2 mb-2 h-[50px] min-h-[50px] overflow-hidden">{report.title}</h3>
-                    <p className=" text-slate-900 mb-2 h-[50px] min-h-[50px] overflow-hidden">{report.description}</p>
-                    <p className=" mb-3 text-white bg-red-700 rounded-md border border-black">{report.company}</p>
-                </Link>)
+                 <div className=" w-full sm:w-1/2 lg:w-1/3 p-2" key={report.id} > 
+                <div href={"/report/" + report.id} className=" text-center bg-slate-500 p-3 rounded">
+                    <Link href='/'>
+                    <div className=" relative mx-auto w-full aspect-video">
+                        <Image priority alt="thumbnail" src={photos[0]} fill objectFit="cover" />
+                    </div>
+                    </Link>
+                    <Link href='/'>
+                        <p className=" line-clamp-2 min-h-8  text-white my-3">{report.title}</p>
+                    </Link>
+                    <p className=" text-slate-900 mb-2 line-clamp-2 overflow-hidden">{report.description}</p>
+                    <p className=" mb-3 py-1 text-white bg-red-700 rounded-md border border-black">{report.company}</p>
+                </div>
+                </div>  
+                )
             })}
         </div>
         </>
