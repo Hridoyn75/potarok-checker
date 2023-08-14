@@ -63,7 +63,7 @@ const SingleReport = ({params}) => {
        }
         FetchSingleReport(params.id);
         
-    }, [params.id]);
+    }, [params.id, baseURL]);
 
     console.log(commentField);
 

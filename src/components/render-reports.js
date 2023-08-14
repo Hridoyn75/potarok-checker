@@ -18,7 +18,7 @@ const RenderReports = ({type}) => {
             .catch(err => console.error(err))
         };
         FetechData()
-    },[]);
+    },[type]);
   return (
     <>
         {reports ? 
