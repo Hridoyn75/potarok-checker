@@ -19,6 +19,7 @@ const SingleReport = ({params}) => {
     const { currentUser } = useContext(AuthContext);
     const { DeleteReport } = useContext(ReportContext);
     const { push } = useRouter();
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     const handleDelete = ()=>{
         const result = window.confirm("Are you sure you want to delete this report?");
@@ -32,7 +33,7 @@ const SingleReport = ({params}) => {
         e.preventDefault();
         try {
             const response = await axios.
-            post("http://localhost:5000/report/comment/create", {
+            post(baseURL + "/report/comment/create", {
                 text: commentField,
                 parentPostID: report.id
             }, {withCredentials: true});
@@ -49,7 +50,7 @@ const SingleReport = ({params}) => {
 
     
     const FetchSingleReport = (reportID) => {
-         axios.get('http://localhost:5000/report/' + reportID)
+         axios.get(baseURL + '/report/' + reportID)
         .then(res => {
             setReport(res.data.report[0])
             setComments(res.data.comments)

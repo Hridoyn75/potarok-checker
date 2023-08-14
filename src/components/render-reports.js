@@ -9,7 +9,7 @@ const RenderReports = ({type}) => {
     const [reports, setReports] = useState(null);
 
     const FetechData = async ()=>{
-        await axios.get('http://localhost:5000/report/' + type, {
+        await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/' + type, {
             withCredentials: true
         })
         .then(res => setReports(res.data))

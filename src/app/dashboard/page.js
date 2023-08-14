@@ -1,4 +1,5 @@
 "use client"
+import BackButton from '@/components/back-button'
 import Button from '@/components/button'
 import RenderReports from '@/components/render-reports'
 import { AuthContext } from '@/context/authContext'
@@ -28,7 +29,7 @@ const Dashboard = () => {
 
       const formData = new FormData();
       formData.append('image', userImage);
-      formData.append('key', 'ff284a93af21e2591813f203c095e14c'); // Replace with your actual API key
+      formData.append('key', process.env.NEXT_PUBLIC_IMGBB_APIKEY); 
       
       try {
         const response = await axios.post('https://api.imgbb.com/1/upload', formData);
@@ -57,6 +58,7 @@ const Dashboard = () => {
         }, 3000);
       }
     };
+    
 
 
 
@@ -69,7 +71,8 @@ const Dashboard = () => {
       </div>
     :
     <div className=' w-full min-h-screen pt-5 px-2 bg-[#FFDFCD] flex justify-center items-center'> 
-    <div className=" bg-white w-[1000px] max-w-full p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
+    <div className=" relative bg-white w-[1000px] max-w-full p-3 min-h-[70%] block border-2 border-blue-950 border-r-8 border-b-8 rounded-lg gap-5 md:flex">
+     <BackButton />
       <div className=' min-w-[300px] pt-20 mb-3 md:mb-0'>
         <div className=" bg-red-200 p-3 rounded">
         <form onSubmit={(e) => handleUpdate(e)}>

@@ -13,10 +13,11 @@ export const AuthProvider = ({children})=>{
     
     const [ currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
 
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
     // Handle user login
     const handleLogin = (e, email, password) => {
       e.preventDefault();
-       axios.post('http://localhost:5000/login', 
+       axios.post(baseURL + '/login', 
       {"email": email, "password": password},
       {withCredentials: true})
       .then((res)=>{
@@ -30,7 +31,7 @@ export const AuthProvider = ({children})=>{
 
     // Handle user logout
     const handleLogout = () => {
-      axios.post('http://localhost:5000/logout',{},{
+      axios.post(baseURL + '/logout',{},{
         withCredentials: true
       })
       .then(() =>{
@@ -41,7 +42,7 @@ export const AuthProvider = ({children})=>{
     // Handle Profile Update
     const handleUserUpdate = async (inputs) =>{
       try {
-        const response = await axios.post('http://localhost:5000/user/update',
+        const response = await axios.post(baseURL + '/user/update',
         inputs, {
          withCredentials:true
        });

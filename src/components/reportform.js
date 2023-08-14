@@ -15,7 +15,7 @@ const ReportForm = () => {
 
 
 
-    const apiKey = 'ff284a93af21e2591813f203c095e14c'; // Replace with your actual ImgBB API key
+    const apiKey = process.env.NEXT_PUBLIC_IMGBB_APIKEY; 
 
     const handleImageChange = async (event) => {
       setDisableForm(true);
@@ -41,7 +41,7 @@ const ReportForm = () => {
     //handle new report submit form
     const handleNewReport = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:5000/report/create', inputs,{
+        await axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/create', inputs,{
           withCredentials:true
         })
         .then(res => {

@@ -21,7 +21,7 @@ const LoginForm = () => {
       e.preventDefault();
       setErr(null);
 
-      await axios.post('http://localhost:5000/signup', 
+      await axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/signup', 
       {"name": name,
       "username": username,
       "email": email,
