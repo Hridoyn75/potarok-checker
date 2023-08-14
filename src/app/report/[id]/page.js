@@ -136,7 +136,7 @@ const SingleReport = ({params}) => {
                 </p>
 
                 {/* Comment Box */}
-                <div className=' bg-blue-500 p-5 rounded mt-20'>
+                <div className=' bg-[#434372] p-5 rounded mt-20'>
                     <p className=' pb-2 text-white'>Comments➘</p>
                     <div className='max-h-[300px] overflow-y-scroll'>
                     {

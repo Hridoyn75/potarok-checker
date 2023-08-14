@@ -11,7 +11,13 @@ export const AuthProvider = ({children})=>{
 
      const { push } = useRouter();
     
-    const [ currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
+    const [ currentUser, setCurrentUser] = useState( null);
+    useEffect(()=>{
+      setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
+    },[])
+    
+
+
 
     const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
     // Handle user login
