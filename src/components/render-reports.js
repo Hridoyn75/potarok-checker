@@ -11,7 +11,6 @@ const RenderReports = ({type}) => {
 
     useEffect(()=>{
         const FetechData = async ()=>{
-            console.log("env variables: " + process.env.NEXT_PUBLIC_API_BASE_URL);
             await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/' + type, {
                 withCredentials: true
             })
