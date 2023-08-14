@@ -8,14 +8,15 @@ import { useEffect, useState } from "react";
 const RenderReports = ({type}) => {
     const [reports, setReports] = useState(null);
 
-    const FetechData = async ()=>{
-        await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/' + type, {
-            withCredentials: true
-        })
-        .then(res => setReports(res.data))
-        .catch(err => console.error(err))
-    }
+
     useEffect(()=>{
+        const FetechData = async ()=>{
+            await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/' + type, {
+                withCredentials: true
+            })
+            .then(res => setReports(res.data))
+            .catch(err => console.error(err))
+        };
         FetechData()
     },[]);
   return (

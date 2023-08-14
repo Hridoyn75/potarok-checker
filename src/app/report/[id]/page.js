@@ -49,20 +49,21 @@ const SingleReport = ({params}) => {
     }
 
     
-    const FetchSingleReport = (reportID) => {
-         axios.get(baseURL + '/report/' + reportID)
-        .then(res => {
-            setReport(res.data.report[0])
-            setComments(res.data.comments)
-            setPhotos(JSON.parse(res.data.report[0].photos))
-    })
-    .catch(err => setErr(err.response.data.error))
-    }
+
 
     useEffect(() => {
+        const FetchSingleReport = (reportID) => {
+            axios.get(baseURL + '/report/' + reportID)
+           .then(res => {
+               setReport(res.data.report[0])
+               setComments(res.data.comments)
+               setPhotos(JSON.parse(res.data.report[0].photos))
+       })
+       .catch(err => setErr(err.response.data.error))
+       }
         FetchSingleReport(params.id);
         
-    }, [FetchSingleReport, params.id]);
+    }, [params.id]);
 
     console.log(commentField);
 
