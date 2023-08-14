@@ -1,27 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@700&display=swap');
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  background-color: #FFDFCD;
+  font-family: 'Baloo Da 2', cursive!important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+/* css for custom scroll bar */
+    /* Firefox */
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: #172554 transparent;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+      width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+      background-color: #172554;
+      border-radius: 10px;
+      border: 0px solid #add8e6;
+  }
+
