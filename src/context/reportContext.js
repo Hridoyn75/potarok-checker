@@ -9,7 +9,7 @@ export const ReportContext = React.createContext();
 export const ReportProvider = ({children})=>{
     
     const DeleteReport = (id)=>{
-        axios.delete("http://localhost:5000/report/delete/"+ id, {
+        axios.delete( process.env.NEXT_PUBLIC_API_BASE_URL + "/report/delete/"+ id, {
             withCredentials: true
         })
         .then(res =>  console.log(res))
