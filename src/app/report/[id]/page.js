@@ -58,9 +58,12 @@ const SingleReport = ({params}) => {
     })
     .catch(err => setErr(err.response.data.error))
     }
-    useEffect(()=> {
-        FetchSingleReport(params.id)
-    }, []);
+
+    useEffect(() => {
+        FetchSingleReport(params.id);
+        
+    }, [FetchSingleReport, params.id]);
+
     console.log(commentField);
 
   return (
