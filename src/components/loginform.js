@@ -15,6 +15,19 @@ const LoginForm = () => {
     const { push } = useRouter();
 
 
+    const Login = async (e)=>{
+      e.preventDefault();
+
+      const res = await handleLogin(email, password);
+      console.log(res);
+      if(res.success){
+        alert(res.message);
+        push("/")
+      }else{
+        setErr(res.message);
+      }
+    }
+
     // const handleSubmit = (e) => {
     //   e.preventDefault();
     //   setErr(null);
@@ -36,7 +49,7 @@ const LoginForm = () => {
   return (
     <div className=' relative w-[500px] flex justify-center items-center max-w-[90%] min-h-[300px] bg-white p-5 border-2 border-blue-950 border-r-8 border-b-8 rounded-lg'>
             <BackButton />
-            <form onSubmit={(e)=>handleLogin(e, email, password )} className=' grid gap-4'>
+            <form onSubmit={Login} className=' grid gap-4'>
             <h1 className=' text-3xl text-blue-950 font-bold  '>Welcome to</h1>
                 <Image 
                 src={"/assets/logo.png"}
@@ -56,7 +69,7 @@ const LoginForm = () => {
                 className=' my-3 bg-blue-500 px-5 py-3 hover:bg-slate-600 hover:text-white border-2 border-blue-950 rounded-lg'>
                     Login
                 </button>
-                { err && <p className=' text-red-700 font-bold'>Something went wrong!</p>} 
+                { err && <p className=' text-red-700 font-bold'>{err}!</p>} 
                 <p>Don't have any account? <Link href='/auth/signup' className=' text-blue-700'>Signup</Link></p>
 
             </form>

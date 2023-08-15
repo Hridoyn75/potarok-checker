@@ -21,18 +21,17 @@ export const AuthProvider = ({children})=>{
 
     const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
     // Handle user login
-    const handleLogin = (e, email, password) => {
-      e.preventDefault();
-       axios.post(baseURL + '/login', 
-      {"email": email, "password": password},
-      {withCredentials: true})
-      .then((res)=>{
-        setCurrentUser(res.data.data)
-        push("/")
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+    const handleLogin = async (email, password) => {
+
+      try {
+        const response = await axios.post(baseURL + '/login', 
+        {"email": email, "password": password},
+        {withCredentials: true});
+        setCurrentUser(response.data.data)
+        return { "success": true, "message": response.data.message }
+      } catch (error) {
+        return { "success": false, "message": error.response.data.error }
+      }
     }
 
     // Handle user logout
@@ -41,8 +40,8 @@ export const AuthProvider = ({children})=>{
         withCredentials: true
       })
       .then(() =>{
-        setCurrentUser(null);
         alert("Logged out successfully")
+        setCurrentUser(null);
       })
     }
     // Handle Profile Update

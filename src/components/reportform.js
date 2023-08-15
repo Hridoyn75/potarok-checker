@@ -12,6 +12,7 @@ const ReportForm = () => {
     const [err, setErr] = useState(null);
 
     const [disableForm, setDisableForm] = useState(false);
+    const [disableFormSubmit, setDisableFormSubmit] = useState(false);
 
 
 
@@ -41,14 +42,17 @@ const ReportForm = () => {
     //handle new report submit form
     const handleNewReport = async (e) => {
         e.preventDefault();
-        await axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/create', inputs,{
-          withCredentials:true
-        })
-        .then(res => {
+        setDisableFormSubmit(true);
+        try {
+          const res = await axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/create', inputs,{
+            withCredentials:true
+          });
           alert(res.data);
           push('/report/all')
-        })
-        .catch(err => setErr(err.response.data));
+        } catch (err) {
+          setErr(err.response.data)
+        }
+        setDisableFormSubmit(false);
     }
     
 
@@ -66,7 +70,8 @@ const ReportForm = () => {
         <p>Add image prove:</p>
         <input onChange={handleImageChange} type="file" accept="image/*" multiple className=" cursor-pointer bg-slate-600 rounded text-white file:bg-green-700 file:border-none file:p-2" />
         { disableForm && <p className=" text-red-700">wait,Image is uploading...</p>}
-        <button disabled={disableForm} type="submit" className=" bg-white border-2 border-blue-950 rounded p-1 px-3 mx-auto mt-3 hover:bg-slate-500 max-w-[250px]">Submit Report</button>
+        { disableFormSubmit && <p className=" text-green-600">Please wait...</p>}
+        <button disabled={disableForm || disableFormSubmit} type="submit" className=" bg-white border-2 border-blue-950 rounded p-1 px-3 mx-auto mt-3 hover:bg-slate-500 max-w-[250px]">Submit Report</button>
         {
           err &&
           <p className=" bg-red-600 p-2 border border-black rounded text-white">{"Oops... " + err +"!"}</p>

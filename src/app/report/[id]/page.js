@@ -87,7 +87,7 @@ const SingleReport = ({params}) => {
                     priority 
                     className=' object-contain rounded-md border-2 border-black' 
                     alt='Feature Image' 
-                    src={featuredIMG || photos[0] || "/assets/profile.png"} 
+                    src={featuredIMG || (photos && photos[0]) || "/assets/thumbnail.png"} 
                     fill={true}
                     
                      />

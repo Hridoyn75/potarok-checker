@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const RenderReports = ({type}) => {
     const [reports, setReports] = useState(null);
 
-
+    const [initialRender, setInitialRender] = useState(true);
     useEffect(()=>{
         const FetechData = async ()=>{
             await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/report/' + type, {
@@ -17,8 +17,13 @@ const RenderReports = ({type}) => {
             .then(res => setReports(res.data))
             .catch(err => console.error(err))
         };
-        FetechData()
-    },[type]);
+        if (initialRender) {
+            FetechData();
+            setInitialRender(false);
+        } else {
+            FetechData();
+        }
+    },[type, initialRender]);
   return (
     <>
         {reports ? 
@@ -36,7 +41,12 @@ const RenderReports = ({type}) => {
                 <div className=" text-center bg-slate-500 p-3 rounded">
                     <Link href={"/report/" + report.id}>
                     <div className=" relative mx-auto w-full aspect-video">
-                        <Image priority alt="thumbnail" src={photos[0]} fill objectFit="cover" />
+                        <Image 
+                        priority 
+                        alt="thumbnail" 
+                        src={photos ? photos[0] : "/assets/thumbnail.png"} 
+                        fill={true} 
+                        className=" object-cover" />
                     </div>
                     </Link>
                     <Link href={"/report/" + report.id}>
