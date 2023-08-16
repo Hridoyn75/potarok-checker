@@ -128,6 +128,22 @@ const SingleReport = ({params}) => {
                 <h3 className=' bg-red-600 py-1 px-4 text-white rounded my-3 border border-black max-w-max'>
                     Scammer: { report.company }
                 </h3>
+                <p>Reported by</p>
+                <div className={` flex justify-center items-center gap-3
+                                 bg-slate-400 w-fit p-3 rounded border border-black
+                                  mt-1 mb-4 text-blue-950`}>
+                    <Image 
+                    priority
+                    src={report.photo}
+                    alt='Reporter Photo'
+                    width={50}
+                    height={50}
+                    className=' object-cover rounded-full aspect-square' />
+                    <div>
+                        <p>{report.name}</p>
+                        <p>@{report.username}</p>
+                    </div>
+                </div>
                 <p> Scam Amount: { report.amount  + " ৳" || "N/A "}</p>
                 <p className=' mt-3'>
                 <span className=' text-xl text-blue-800'>Scam Details:</span> 
